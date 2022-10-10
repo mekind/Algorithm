@@ -1,7 +1,8 @@
 # How To Study Algorithm? 
 
-> It's Easy. Think and Solve.
-> Just Never Forgive. 
+> It's Easy. 
+> Think and Solve.    
+> Just Never Give UP. 
 
 > 뻘소리 By 김동성
 
