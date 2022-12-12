@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import pprint
 import json
 import time
-
+import datetime
 
 file_path1 = "./hre_data.json"
 file_path2 = "./step_problem_id_data.json"
@@ -133,7 +133,7 @@ if __name__ == "__main__":
     '''
     # print(len(step_infos))
     get_users_status(match_count)
-
+    print(datetime.datetime.now())
     print("================Brief=================")
     for user in users_info:
         print(f"\n아이디: {user['id']}  현황 : {user['total']} / {total_cnt}")
