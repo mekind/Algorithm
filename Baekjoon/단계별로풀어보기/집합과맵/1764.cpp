@@ -6,28 +6,29 @@ typedef long long ll;
 
 int testcase;
 int N, M;
-map<string, bool> ss;
+map<string, bool> tmp;
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-
-    int N, M;
-
     cin >> N >> M;
 
     for (int i = 0; i < N; i++) {
         string s;
+
         cin >> s;
-        ss[s] = true;
+        tmp[s] = true;
     }
-    int ans = 0;
+    vector<string> v;
     for (int i = 0; i < M; i++) {
-        string m;
+        string s;
 
-        cin >> m;
-        if (ss.find(m) != ss.end()) ans++;
+        cin >> s;
+
+        if (tmp.find(s) != tmp.end()) v.push_back(s);
     }
+    sort(v.begin(), v.end());
+    cout << v.size() << "\n";
 
-    cout << ans;
+    for (string s : v) cout << s << "\n";
 }

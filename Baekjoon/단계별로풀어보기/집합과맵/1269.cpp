@@ -6,28 +6,27 @@ typedef long long ll;
 
 int testcase;
 int N, M;
-map<string, bool> ss;
+int arr[200010];
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-
-    int N, M;
-
     cin >> N >> M;
 
     for (int i = 0; i < N; i++) {
-        string s;
-        cin >> s;
-        ss[s] = true;
+        cin >> arr[i];
     }
+
+    sort(arr, arr + N);
+
     int ans = 0;
     for (int i = 0; i < M; i++) {
-        string m;
+        int tmp;
+        cin >> tmp;
+        int idx = lower_bound(arr, arr + N, tmp) - arr;
 
-        cin >> m;
-        if (ss.find(m) != ss.end()) ans++;
+        if (0 <= idx && idx < N && arr[idx] == tmp) ans++;
     }
 
-    cout << ans;
+    cout << N + M - 2 * ans;
 }
