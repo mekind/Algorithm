@@ -1,6 +1,6 @@
 # How To Study Algorithm? 
 
-> It's Easy. 
+> It's Easy.    
 > Think and Solve.    
 > Just Never Give UP. 
 
