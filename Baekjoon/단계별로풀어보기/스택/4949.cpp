@@ -12,13 +12,14 @@ int main() {
 
     while (1) {
         string s;
-        getline(cin, s, '\n');
+        getline(cin, s);
 
         if (s[0] == '.') break;
 
         vector<char> v;
         bool ans = false;
         for (int i = 0; i < s.length(); i++) {
+            if (s[i] == '.') break;
             if (s[i] == '(' || s[i] == '[') {
                 v.push_back(s[i]);
             }
@@ -43,6 +44,8 @@ int main() {
                 }
             }
         }
+
+        if (!v.empty()) ans = true;
 
         if (ans)
             cout << "no\n";
