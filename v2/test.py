@@ -73,9 +73,16 @@ def get_problem_count_and_id():
 def get_users_status(match_count):
     for info in users_info:
         print(f"now : {info['id']}")
-        response = requests.get(url+f'/user/{info["id"]}')
+        # print(url+f'/user/{info["id"]}')
+        request_headers = {
+            'User-Agent': ('Mozilla/5.0 (Windows NT 10.0;Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36')
+        }
+        response = requests.get(
+            url+f'/user/{info["id"]}', headers=request_headers)
         html = response.text
         soup = BeautifulSoup(html, 'html.parser')
+        # print(soup)
+        print(soup.find_all('div', class_='problem-list'))
         a = soup.find_all('div', class_='problem-list')[0]
         details = {}
         for link in a.find_all('a'):
@@ -138,17 +145,17 @@ if __name__ == "__main__":
     for user in users_info:
         print(f"\n아이디: {user['id']}  현황 : {user['total']} / {total_cnt}")
 
-    print("\n================Detail=================")
-    for user in users_info:
-        print(f"\n=============아이디: {user['id']}=============\n")
-        n_details = user['details']
-        n_details = dict(sorted(n_details.items()))
-        # print(n_details)
-        for i in range(1, 55):
-            if n_details.get(i) is None:
-                print(
-                    f"{step_infos[i-1]['step_id']}. {step_infos[i-1]['description']}:  ( 0 / {step_infos[i-1]['problem_count']})")
-            else:
-                print(
-                    f"{n_details[i]['id']}. {n_details[i]['description']}:  ( {n_details[i]['count']} / {n_details[i]['total']})")
+    # print("\n================Detail=================")
+    # for user in users_info:
+    #     print(f"\n=============아이디: {user['id']}=============\n")
+    #     n_details = user['details']
+    #     n_details = dict(sorted(n_details.items()))
+    #     # print(n_details)
+    #     for i in range(1, 55):
+    #         if n_details.get(i) is None:
+    #             print(
+    #                 f"{step_infos[i-1]['step_id']}. {step_infos[i-1]['description']}:  ( 0 / {step_infos[i-1]['problem_count']})")
+    #         else:
+    #             print(
+    #                 f"{n_details[i]['id']}. {n_details[i]['description']}:  ( {n_details[i]['count']} / {n_details[i]['total']})")
         print("\n=============End=============\n")
