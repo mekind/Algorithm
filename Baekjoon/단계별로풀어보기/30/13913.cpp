@@ -13,7 +13,7 @@ bool is_range(int now) {
     return false;
 }
 
-int sol() {
+void sol() {
     queue<int> q;
 
     q.push(K);
@@ -23,20 +23,21 @@ int sol() {
         q.pop();
         if (now == N) break;
 
-        if (now + 1 < 200000 && dp[now + 1] == -1) {
-            dp[now + 1] = dp[now] + 1;
-            q.push(now + 1);
-        }
-        if (now - 1 > 0 && dp[now - 1] == -1) {
-            dp[now - 1] = dp[now] + 1;
-            q.push(now - 1);
-        }
         if (now % 2 == 0 && dp[now / 2] == -1) {
             dp[now / 2] = dp[now] + 1;
             q.push(now / 2);
         }
+        if (now + 1 <= 200000 && dp[now + 1] == -1) {
+            dp[now + 1] = dp[now] + 1;
+            q.push(now + 1);
+        }
+        if (now - 1 >= 0 && dp[now - 1] == -1) {
+            dp[now - 1] = dp[now] + 1;
+            q.push(now - 1);
+        }
         if (dp[N] != -1) break;
     }
+    return;
 }
 
 int main() {
@@ -53,6 +54,7 @@ int main() {
     int start = N;
 
     cout << start << " ";
+
     while (start != K) {
         if (is_range(start - 1) && dp[start - 1] == dp[start] - 1) {
             start -= 1;
@@ -65,10 +67,11 @@ int main() {
             continue;
         }
         if (is_range(start * 2) && dp[start * 2] == dp[start] - 1) {
-            start /= 2;
+            start *= 2;
             cout << start << " ";
             continue;
         }
+        cout << "-1";
     }
 
     return 0;
