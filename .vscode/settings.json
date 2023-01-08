@@ -4,6 +4,9 @@
     "vector": "cpp",
     "ios": "cpp",
     "string": "cpp",
-    "set": "cpp"
+    "set": "cpp",
+    "queue": "cpp",
+    "deque": "cpp",
+    "__bit_reference": "cpp"
   }
 }
